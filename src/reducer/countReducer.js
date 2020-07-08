@@ -1,15 +1,9 @@
-export default function(state = {count: 0}, action) {
+export default function(state = 1, action) {
   switch (action.type) {
     case 'increment-counter':
-      return {
-        ...state,
-        count: state.count+1
-      }
+      return state + 1
     case 'diminished-counter':
-      return {
-        ...state,
-        count: state.count-1
-      }
+      return state - 1
     default:
       return state
   }

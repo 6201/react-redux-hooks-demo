@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import rootReducer from './reducer'
+import rootSaga from './sagas';
 
-const store = createStore(rootReducer);
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+// const initialState = { count: 1, customAsyncData: "" };
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+// then run the saga
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={store}>
