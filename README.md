@@ -2,3 +2,4 @@
 
 `useDispatch`
 `useSelector`
+`useCallback`
